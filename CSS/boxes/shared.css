@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+:root {
+    --dark-green: #0e4f1f;
+    --highlight-colour: #ff1b68;
+}
+
+/*
+  It is used often and most of the element will have this styling
+   box-sizing: border-box means if you're setting width and height ,wants it to be calculated/applied for content,padding and border together. Ignore margin.
+*/
+* {
+    box-sizing: border-box;
+}
+
+
+/*
+   This is to set the global font-family all the text in the page
+   Inheritance has the lowest specifity
+ */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+main {
+    min-height: calc(100vh - 3.5rem - 8rem);
+    margin-top: 3.5rem;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+
+}
+
+/*  Rules to Remember( Units Modules)
+   1. If the element has position fixed and % unit is applied the containing block is the viewport
+   2.
+
+*/
+.main-header {
+    width: 100%;
+    background: #2ddf5c;
+    padding: 8px 16px;
+    position: fixed;
+    top: 0;
+    z-index: 60;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*
+  Main header and direct child
+*/
+.main-header > div {
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+
+}
+
+.toggle-button {
+    width: 3rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+}
+
+.toggle-button:focus {
+    outline: none;
+}
+
+.toggle-button__bar {
+    width: 100%;
+    height: 0.2rem;
+    background: black;
+    display: block;
+    margin: 0.6rem 0;
+}
+
+
+.main-header__brand {
+    color: #0e4f1f;
+    text-decoration: none;
+    font-weight: bold;
+    /*font-size: 22px;*/
+    /*height: 22px;*/
+    /*font-size: 1.5rem;*/
+    /*height: 2.5rem;*/
+    /*height: 1.5rem;*/
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+}
+
+/* As image is inside a inline element we need to make main-header__brand display: inline-block and height to 22px. so setting height: 100% would take the 22px height from main-header__brand*/
+.main-header__brand img {
+    height: 2.5rem;
+    vertical-align: middle;
+    /*height: 2.5rem;*/
+}
+
+.main-nav {
+    display: none;
+
+}
+
+.main-nav__items {
+    margin: 0;
+    padding: 0;
+    /* It removes bullets if any are there */
+    list-style: none;
+    display: flex;
+
+}
+
+.main-nav__item {
+    /*
+      inline-block means you want the elements to be inline but the all of them together should be one block
+    */
+    display: inline-block;
+    margin: 0px 10px;
+    text-decoration: none;
+}
+
+.main-nav__item a,
+.mobile-nav__item {
+    text-decoration: none;
+    color: #0e4f1f;
+    font-weight: bold;
+    /*padding: 3px 0;*/
+    padding: 0.2rem 0;
+}
+
+/*
+  Example of pseudo-elements
+*/
+/*.main-nav__item a::after {
+    content: " (Link)";
+    color: red;
+}*/
+
+/*
+   Example of pseudo-classes
+*/
+/*.main-nav__item a:hover {
+    color: white;
+}
+
+.main-nav__item a:active {
+    color: white;
+}*/
+
+/*
+  Grouping rules
+*/
+.main-nav__item a:active,
+.main-nav__item a:hover {
+    color: white;
+    border-bottom: 5px solid white;
+}
+
+.main-nav__item--cta {
+    animation: wiggle 400ms 3s 8 ease-out none;
+}
+
+
+/*
+  Example of pseudo-elements
+*/
+/*p::first-letter {
+    color: red;
+    font-size: 22px;
+}*/
+
+/*
+  To override the '.main-nav__item a' what matters is the order because '.main-nav__item--cta a' and '.main-nav__item a' both have a same specifity
+*/
+.main-nav__item--cta a,
+.mobile-nav__item--cta a{
+    color: white;
+    background: red;
+    /*padding: 8px 16px;*/
+    padding: 0.5rem 1rem;
+    /* round the corners of border*/
+    border-radius: 8px;
+
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active,
+.mobile-nav__item--cta a:hover,
+.mobile-nav__item--cta a:active {
+    color: red;
+    background: white;
+    /* Remove the border set in .main-nav__item a:active,.main-nav__item a:hover and resolve the conflicts */
+    border: none;
+}
+
+@media (min-width: 40rem) {
+    .toggle-button {
+        display: none;
+    }
+
+    .main-nav {
+        /*display: inline-block;*/
+        /*text-align: right;*/
+        /*width: calc(100% - 44px);*/
+        /*vertical-align: middle;*/
+        display: flex;
+    }
+}
+
+.main-footer {
+    background: black;
+    /*padding: 20px;*/
+    /*margin-top: 48px;*/
+    padding: 2rem;
+    margin-top: 3rem;
+
+}
+
+.main-footer__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+}
+
+.main-footer__link {
+    /*display: block;*/
+    /*margin: 0 16px;*/
+    margin: 0.5rem 0;
+}
+
+.main-footer__link a {
+    color: white;
+    /* To remove the underline link */
+    text-decoration: none;
+}
+
+.main-footer__link a:hover,
+.main-footer__link a:active {
+    color: #ccc;
+}
+
+.button {
+    color: white;
+    /*padding: 8px;*/
+    padding: 0.5rem;
+    background: var(--dark-green, #0e4f1f);
+    border-radius: 4px;
+    /*  font inherit will prioritise font family from our body as by default browser sets some styles to button*/
+    font: inherit;
+    border: 1px solid var(--dark-green);
+    font-weight: bold;
+    /* cursor property will show the hand icon whenever you move the cursor on the button*/
+    cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+    background: white;
+    color: var(--dark-green);
+}
+
+/* :focus is used for input element like button, inputs*/
+.button:focus {
+    outline: none;
+}
+
+/*
+  Select all the buttons which are disabled
+*/
+.button[disabled] {
+    cursor: not-allowed;
+    border: #a1a1a1;
+    background: #ccc;
+    color: #a1a1a1;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 80%;
+    height: 100vh;
+}
+
+.mobile-nav__items {
+    width: 90%;
+    height: 100%;
+    list-style: none;
+    margin: 0% auto;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*align-content: center;*/
+}
+
+.mobile-nav__item {
+    margin: 1rem 0;
+}
+
+.mobile-nav__item a {
+    font-size: 1.5rem;
+}
+
+.open {
+    /* !important is added here as we're trying to attach this class to modal class and the modal class is available in main.css and in index.html shared.css class loads first and then the main.css.
+       So if we don't add the !important the open class will override the modal class
+    */
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+@media (min-width: 40rem) {
+    .main-footer__link {
+        /*margin: 0 16px;*/
+        margin: 0 1rem;
+    }
+
+    .main-footer__links {
+        flex-direction: row ;
+        justify-content: center;
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotateZ(0);
+    }
+    50% {
+        transform: rotateZ(-10deg);
+    }
+    100% {
+        transform: rotateZ(10deg);
+    }
+}
