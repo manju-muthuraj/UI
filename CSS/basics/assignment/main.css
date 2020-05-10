@@ -1,0 +1,39 @@
+body {
+    font-family: sans-serif;
+}
+
+#assignment-instructions {
+    color: blue;
+    font-family: sans-serif;
+}
+
+/*
+  Same as #assignment-instructions. All ids in html would get the below styling
+*/
+[id] {
+    color: black;
+    font-family: sans-serif;
+}
+
+code {
+    color: red;
+    font-family: monospace;
+}
+
+.codesecond {
+    color: green;
+    font-family: monospace;
+}
+
+li + li {
+    color: white;
+    background:black;
+}
+
+/*
+  The below combinator simply overrides the above combinator because the file is parsed top -> down. The combinators doesn't come with their own specificity
+*/
+ol > li {
+    color: white;
+    background:black;
+}

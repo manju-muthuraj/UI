@@ -1,0 +1,91 @@
+
+/*
+CSS file gets parsed from top to bottom.However the specifity of a each selector differ.In case of
+class selector whether it's above the html element still the class selector takes precedence.
+
+CSS Property references - https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+*/
+
+/*
+   This is to set the global font-family all the text in the page
+   Inheritance has the lowest specifity
+ */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*
+  id selector
+  performance of ids are great.
+ */
+#product-overview {
+    background: #ff1b68;
+}
+
+/* class selector
+   performance of classes are great.
+*/
+.section-title {
+    color: #2ddf5c;
+   /*  The inherit would get the font-family from body
+   font-family: inherit;
+   */
+}
+
+/*
+   Descendant sibling example (Most commonly used combinator)
+   id and tag combination selector
+   Any h1 tag inside of a id selector 'product-overview' would get the below styling
+   Combinator selectors have the highest specifity
+   Rule with more information(#product-overview h1) wins over the rule with less information like h1 tag
+*/
+#product-overview h1 {
+    color: white;
+    font-family: 'Anton', sans-serif;
+}
+
+/*
+Adjacent(direct) sibling example
+Any p tags immediately after h1 tag would get the colour red
+
+h1 + p {
+    color: red;
+}
+*/
+
+/*
+General sibling example
+Any p tags after h1 tag would get the colour red but need not be immediate element.Both h1 and p just needs to share the same parent.
+
+h1 ~ p {
+    color: red;
+}
+*/
+
+/*
+Child sibling example
+Any p tags which is a direct child of h1 tag irrespective of the position would get the colour red
+Second element(p here) is a direct child of first element(h1 here)
+
+h1 > p {
+    color: red;
+}
+*/
+
+/* Attribute selector */
+[redColourAttrubute] {
+    color: blue;
+}
+
+/* html element selector */
+h1 {
+    font-family: Anton;
+     color: white;
+}
+
+/*
+This h1 selector takes precedence compared to any h1 selector up the CSS file.
+ */
+ /*h1 {
+    font-family: sans-serif;
+}*/
