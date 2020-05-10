@@ -1,0 +1,153 @@
+@font-face {
+    font-family: 'AnonymousPro';
+    src: url("anonymousPro-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'AnonymousPro';
+    src: url("anonymousPro-Bold.ttf") format('truetype');
+    font-weight: 700;
+}
+
+main {
+    padding-top: 2rem;
+}
+
+.background {
+    background: url("../boxes/plans-background.jpg") center/cover;
+    /*
+      filter property allow you to change the visible appearance of a image
+    */
+    filter: grayscale(40%);
+    /*width: 100%;*/
+    /*height: 100%;*/
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    /* Every element in browser would have a default value of auto(i.e., 0) for Z-index
+       Z-index without the property 'position' in a class would not make any difference
+       Z-index 1....100 means it would apply css classes above this class
+       Z-index -1....-100 means it would apply css classes below this class
+       So if there is no position property in above/below classes it is of no use
+     */
+    z-index: -1;
+}
+
+.package {
+    width: 80%;
+    margin: 1rem 0;
+    border: 4px solid #0e4f1f;
+    border-left: none;
+    position: relative;
+    /*overflow hidden will hide the content which goes out of the .package class*/
+    overflow: hidden;
+}
+
+.package:hover,
+.package:active {
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    border-color: #ff5454;
+}
+
+.package a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 2rem;
+}
+
+.package__badge {
+    /* Now the class position is fixed as we top as 0. To fix this we have to add position: relative to its ancestor class i.e., .package
+       fixed and absolute values are comparable as both removes the element from document flow.For fixed value the position context always
+       viewport but for absolute value it depends.If you don't have ancestor
+       with position applied then the position context would be html element .package__badge. If have the ancestor with position value applied
+       then the absolute of this class would be positioned relative to ancestor.
+    */
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0em;
+    font-size: 0.8rem;
+    color: white;
+    background: #ff5454;
+    padding: 0.5rem;
+    width: 12rem;
+    text-align: center;
+    transform: rotateZ(45deg) translateX(3.5rem) translateY(-1rem);
+    /*center is default value*/
+    transform-origin:center;
+}
+
+.package__subtitle {
+    color: rgb(97,97,97);
+}
+
+.package__info {
+    padding: 1rem;
+    border: 1px solid #0e4f1f;
+    /*font-size: 1.2rem;*/
+    color: darkgreen;
+    background: white;
+    /*font-family: 'AnonymousPro', sans-serif;*/
+    /*text-decoration: underline wavy red;*/
+    /*text-shadow: 5px 5px 7px orange;*/
+    /*
+     font shorthand arg1(font--style) arg2(font--variant) arg3(font--weight) arg4(font--size/line-height) arg5(font--family) arg6(font--size)
+    */
+    font: italic 700 1.2rem/2 'AnonymousPro', sans-serif ;
+
+}
+
+.clearfix {
+    /* Any element which comes after this (clear floats) will not respect float */
+    clear: both;
+}
+
+#plus {
+    background: rgba(233,255,220,0.95);
+}
+
+#free {
+    background: rgba(234, 252, 237, 0.95);
+    /* float will remove the element from DOM and moves to the right*/
+    float: right;
+    border-right: none;
+    border-left: 4px solid #0e4f1f;
+    text-align: right;
+}
+
+#free:hover,
+#free:active {
+    border-left-color: #ff5454 ;
+}
+
+#premium {
+    background: rgba(14, 79,31, 0.95);
+}
+
+#premium .package__title {
+    color: #bbb;
+}
+
+@media (min-width: 40rem) {
+    main {
+        max-width: 1500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 1500px) {
+    .package {
+        border-left: 4px solid #0e4f1f;
+    }
+
+    #free {
+        border-right: 4px solid #0e4f1f;
+    }
+
+    #free:hover,
+    #free:active {
+        border-right-color: #ff5454 ;
+    }
+}
